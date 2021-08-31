@@ -1,20 +1,30 @@
 // Validating [prop]'s [type] in [Person] interface
-    interface Person {
-        name: string
-        age: number
-    }
+    // Describing data structures in a more natural way
+        // TS recomends working with [interface]s over [type]s when possible
+            interface Person {
+                name: string
+                age: number
+            }
+        // TS recomends working with [interface]s over [type]s when possible
+    // Describing data structures in a more natural way
 // Validating [prop]'s [type] in [Person] interface
 
-// Validating [prop]'s [type] in [Person] object
-    // type Person = {
-    //     name: string
-    //     age: number
-    // };
-// Validating [prop]'s [type] in [Person] object
+// Validating [prop]'s [type] in [Person]
+    // Can be used as aliases for other types
+        // to desribe function types
+            // type Person = {
+                //     name: string
+                //     age: number
+            // };
+        // to desribe function types
+    // Can be used as aliases for other types
+// Validating [prop]'s [type] in [Person]
+
+type Data = string;
 
 export default function play (){
     
-    const name = 'Fred';
+    const name : Data = 'Fred';
     const age = 30;
 
     const person : Person = {
