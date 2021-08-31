@@ -1,30 +1,25 @@
 // Validating [prop]'s [type] in [Person] interface
-    // Describing data structures in a more natural way
-        // TS recomends working with [interface]s over [type]s when possible
-            interface Person {
-                name: string
-                age: number
-            }
-        // TS recomends working with [interface]s over [type]s when possible
-    // Describing data structures in a more natural way
+    
+    interface Person {
+        name: string
+        age: number
+    }
+        
 // Validating [prop]'s [type] in [Person] interface
 
-// Validating [prop]'s [type] in [Person]
-    // Can be used as aliases for other types
-        // to desribe function types
-            // type Person = {
-                //     name: string
-                //     age: number
-            // };
-        // to desribe function types
-    // Can be used as aliases for other types
-// Validating [prop]'s [type] in [Person]
+// [interface] function
+    // interface PersonLoggerFn{
+    //     (name: string, age: number): string;
+    // };
+// [interface] function
 
-type Data = string;
+// [type] function
+    type PersonLoggerFn = (name: string, age: number) => string;
+// [type] function
 
 export default function play (){
     
-    const name : Data = 'Fred';
+    const name : string = 'Fred';
     const age = 30;
 
     const person : Person = {
@@ -32,10 +27,9 @@ export default function play (){
         age: 34
     };
 
-    function logPersonInfo(personName:string, personAge:number){
-
-        //const info = 'Name: ' +personName+ ', age: ' +personAge;
-        const info = `Name: ${personName}, age: ${personAge}`
+    const logPersonInfo: PersonLoggerFn = (personName: string, personAge: number): string =>{
+        
+        const info = 'Name: ' +personName+ ', age: ' +personAge;
         console.log(info);
         return info;
 
@@ -50,7 +44,7 @@ export default function play (){
 
     };
 
-    logPersonInfo(name, age);
+    const log = logPersonInfo(name, age);
     logPersonInfo2(person);
 
 };
