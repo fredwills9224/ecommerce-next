@@ -1,11 +1,22 @@
 // Validating [prop]'s [type] in [Person] interface
-    
-    interface Person {
-        name: string
-        age: number
-    }
-        
+    // interface Person {
+    //     name: string
+    //     age: number
+    // }
 // Validating [prop]'s [type] in [Person] interface
+
+// [Person] as a class
+    class Person{
+
+        name: string;
+        age: number;
+        constructor(name: string, age: number){
+            this.name = name
+            this.age = age
+        };
+
+    };
+// [Person] as a class 
 
 // [interface] function
     // interface PersonLoggerFn{
@@ -22,10 +33,12 @@ export default function play (){
     const name : string = 'Fred';
     const age = 30;
 
-    const person : Person = {
-        name: 'Janay',
-        age: 34
-    };
+    // [Person] hardcoded
+    // const person : Person = {
+        //     name: 'Janay',
+        //     age: 34
+        // };
+    // [Person] hardcoded
 
     const logPersonInfo: PersonLoggerFn = (personName: string, personAge: number): string =>{
         
@@ -45,6 +58,8 @@ export default function play (){
     };
 
     const log = logPersonInfo(name, age);
+    const person = new Person('Edward', 50);
+
     logPersonInfo2(person);
 
 };
