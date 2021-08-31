@@ -9,7 +9,7 @@
     class Person{
 
         name: string;
-        age: number;
+        age?: number;
         constructor(name: string, age: number){
             this.name = name
             this.age = age
@@ -24,9 +24,9 @@
     // };
 // [interface] function
 
-// [type] function
-    type PersonLoggerFn = (name: string, age: number) => string;
-// [type] function
+// [type] function with 1 required argument and 1 optional argument that returns a string
+    type PersonLoggerFn = (name: string, age?: number) => string;
+// [type] function with 1 required argument and 1 optional argument that returns a string
 
 export default function play (){
     
@@ -34,19 +34,23 @@ export default function play (){
     const age = 30;
 
     // [Person] hardcoded
-    // const person : Person = {
-        //     name: 'Janay',
-        //     age: 34
-        // };
+        const janay : Person = {
+            name: 'Janay'
+        };
     // [Person] hardcoded
 
-    const logPersonInfo: PersonLoggerFn = (personName: string, personAge: number): string =>{
+    //
+    const logPersonInfo: PersonLoggerFn = (
+        personName: string, 
+        personAge: number = 0
+        ) : string => {
         
         const info = 'Name: ' +personName+ ', age: ' +personAge;
         console.log(info);
         return info;
 
     };
+    //
 
     function logPersonInfo2(person : Person){
 
@@ -57,9 +61,10 @@ export default function play (){
 
     };
 
-    const log = logPersonInfo(name, age);
+    const log = logPersonInfo(name);
     const person = new Person('Edward', 50);
 
     logPersonInfo2(person);
+    logPersonInfo2(janay);
 
 };
