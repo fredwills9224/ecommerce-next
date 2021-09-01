@@ -22,7 +22,11 @@ export default function play (){
     // Union of arguments -> can only access attributes that both arguments share 
         function logCarInfo(car: Car){
             
-            console.log(car.name);
+            // Casting [car] into specific type in order to access unshared attributes
+                console.log((car as CityCar).space);
+                console.log((<RaceCar>car).maxSpeed);
+            // Casting [car] into specific type in order to access unshared attributes
+
             switch(car.maxSpeed){
                 
                 case 200:
