@@ -1,8 +1,26 @@
+interface Person {
+    kind: 'business' | 'academic' | 'otherType'
+    name: string
+    age: number
+};
+
+interface BusinessPerson extends Person {
+    kind: 'business'
+    salary: number
+};
+
+interface AcademicPerson extends Person {
+    kind: 'academic'
+    publications: string[]
+};
+
+type Human = BusinessPerson | AcademicPerson | {kind: 'otherType', special: string};
+
 type RaceCar = {
     name: string
     maxSpeed: 200,
     team: string
-}
+};
 
 type CityCar = {
     name: string,
@@ -18,14 +36,32 @@ export default function play (){
         name: 'Race Car',
         maxSpeed:200,
         team: 'ferari'
-    }
-    // Union of arguments -> can only access attributes that both arguments share 
+    };
+
+    const fred: BusinessPerson = {
+        kind: 'business',
+        name: 'fred',
+        age: 34,
+        salary: 200,
+
+    };
+
+    function logPersonInfo(human : Human){
+
+        if(human.kind === 'academic'){
+            console.log(human);
+        }else if(human.kind === 'business') {
+            console.log(human);
+        }else if(human.kind === 'otherType'){
+            console.log(human);
+        }else{
+            console.log(human);
+        }
+
+    };
+
+    // Union of argument's type -> can only access attributes that both arguments share unless type has been cased 
         function logCarInfo(car: Car){
-            
-            // Casting [car] into specific type in order to access unshared attributes
-                console.log((car as CityCar).space);
-                console.log((<RaceCar>car).maxSpeed);
-            // Casting [car] into specific type in order to access unshared attributes
 
             switch(car.maxSpeed){
                 
@@ -45,9 +81,10 @@ export default function play (){
             };
 
         };
-    // Union of arguments -> can only access attributes that both arguments share
+    // Union of argument's type -> can only access attributes that both arguments share unless type has been cased
 
     logCarInfo(car);
+    logPersonInfo(fred);
 
 };
 
