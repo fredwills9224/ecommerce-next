@@ -107,6 +107,13 @@ export default function play (){
         };
     // Union of argument's type -> can only access attributes that both arguments share unless type has been cased
 
+    // Generic function
+        function printInfo(somObject: {[key: string]: string | number | boolean}){
+            console.log(somObject);
+        };
+    // Generic function
+
+    printInfo({ age: 23, isMarried: true, name: 'fred1' });
     logCarInfo(car);
     logCarInfo(car1);
     logPersonInfo(fred);
