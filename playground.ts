@@ -1,22 +1,22 @@
 interface Person {
-    kind: 'business' | 'academic' | 'otherType'
-    name: string
+    kind: 'business' | 'academic' | 'otherType',
+    name: string,
     age: number
 };
 
 interface BusinessPerson extends Person {
-    kind: 'business'
+    kind: 'business',
     salary: number
 };
 
 interface AcademicPerson extends Person {
-    kind: 'academic'
+    kind: 'academic',
     publications: string[]
 };
 
 // Declaration merging can only be performed on interfaces
     interface Person {
-        prop1: string
+        prop1: string,
         prop2: number
     };
 // Declaration merging can only be performed on interfaces
@@ -24,7 +24,7 @@ interface AcademicPerson extends Person {
 type Human = BusinessPerson | AcademicPerson | {kind: 'otherType', special: string};
 
 type RaceCar = {
-    name: string
+    name: string,
     maxSpeed: 200,
     team: string
 };
@@ -35,7 +35,13 @@ type CityCar = {
     maxSpeed: 100
 };
 
-type Car = RaceCar | CityCar;
+type SUVCar = {
+    name: string,
+    maxSpeed: 150,
+    isCarbonFree: boolean
+};
+
+type Car = RaceCar | CityCar | SUVCar;
 
 export default function play (){
 
@@ -44,6 +50,12 @@ export default function play (){
         maxSpeed:200,
         team: 'ferari'
     };
+
+    const car1: SUVCar ={
+        name: 'Suv car',
+        maxSpeed: 150,
+        isCarbonFree: true
+    }
 
     const fred: BusinessPerson = {
         kind: 'business',
@@ -81,9 +93,13 @@ export default function play (){
                     console.log(car);
                     break
                 ;
-                default:
+                case 150:
                     console.log(car);
                     break
+                ;
+                default:
+                    const _never: never = car;
+                    return _never
                 ;
 
             };
@@ -92,6 +108,7 @@ export default function play (){
     // Union of argument's type -> can only access attributes that both arguments share unless type has been cased
 
     logCarInfo(car);
+    logCarInfo(car1);
     logPersonInfo(fred);
 
 };
