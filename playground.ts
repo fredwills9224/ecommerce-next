@@ -14,6 +14,13 @@ interface AcademicPerson extends Person {
     publications: string[]
 };
 
+// Declaration merging can only be performed on interfaces
+    interface Person {
+        prop1: string
+        prop2: number
+    };
+// Declaration merging can only be performed on interfaces
+
 type Human = BusinessPerson | AcademicPerson | {kind: 'otherType', special: string};
 
 type RaceCar = {
@@ -43,7 +50,8 @@ export default function play (){
         name: 'fred',
         age: 34,
         salary: 200,
-
+        prop1: 'prop1',
+        prop2: 2
     };
 
     function logPersonInfo(human : Human){
