@@ -1,31 +1,12 @@
 interface Person {
-    kind: 'business' | 'academic' | 'otherType',
     name: string,
     age: number
 };
 
-interface BusinessPerson extends Person {
-    kind: 'business',
-    salary: number
-};
-
-interface AcademicPerson extends Person {
-    kind: 'academic',
-    publications: string[]
-};
-
-// Declaration merging can only be performed on interfaces
-    interface Person {
-        prop1: string,
-        prop2: number
-    };
-// Declaration merging can only be performed on interfaces
-
-class Logger {
-    log(items: Array<string>, callback: any){
-        debugger;
+class Logger<Type> {
+    log(items: Array<Type>, callback: (item: Type)=> void){
+        
         items.forEach((item)=>{
-            debugger;
             callback(item);
         });
 
@@ -34,12 +15,22 @@ class Logger {
 
 export default function play (){
 
-    const logger = new Logger();
+    const logger = new Logger<string>();
     const cars = ['audi', 'skoda', 'citroen'];
-    debugger;
-    logger.log(cars, (car: any)=>{
-        debugger;
+    logger.log(cars, (car)=>{
         console.log(car);
+    });
+
+    const logger2 = new Logger<number>();
+    const numbers = [1,2,3,4,5,6,7,8];
+    logger2.log(numbers, (number)=>{
+        console.log(number);
+    });
+
+    const logger3 = new Logger<Person>();
+    const people = [{name: 'fred', age: 30},{name: 'janay', age: 29}]
+    logger3.log(people, (person)=>{
+        console.log(person);
     });
 
 };
