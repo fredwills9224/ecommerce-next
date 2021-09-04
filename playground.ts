@@ -1,84 +1,125 @@
 interface Person {
     name: string,
+};
+
+interface Student extends Person{
     age: number,
     city: string
 };
 
-class Student implements Person{
-    name = '';
-    age = 0;
-    city = '';
+interface BusinessPerson extends Student{
+    car: string
 };
 
-class BusinessPerson implements Person{
-    name = '';
-    age = 0;
-    city = '';
-    salary = 100000;
+interface PostGraduateStudent extends Student{
+    projects: string[]
 };
 
-type WebDeveloper = {
-    name: string,
-    age: number,
-    city: string,
-    salary: number,
-    fullStack: boolean,
-    frontEnd: boolean,
-    backEnd: boolean
+type StudentInfo<T extends Student = Student> ={
+    data: T,
+    grades: number[],
+    internships?: string[]
 };
 
-class StudentLogger<T extends Student> {
-    log(items: Array<T>, callback: (item: T)=> void){
-        
-        items.forEach((item)=>{
-            callback(item);
-        });
+// interface StudentInfo<T extends Student = Student> {
+//     data: T,
+//     grades: number[],
+//     internships?: string[]
+// };
 
-    };
+type BusinessPersonInfo = {
+    data: BusinessPerson,
+    grades: number[],
+    salary: number
 };
 
-class BusinessPersonLogger<T extends Person = BusinessPerson>{
-
-    log(items: Array<T>, callback: (item: T)=> void){
-        
-        items.forEach((item)=>{
-            callback(item);
-        });
-
-    };
-
-};
 
 export default function play (){
 
-    const studentLogger = new StudentLogger<Person>();
-    const businessPersonLogger = new BusinessPersonLogger<BusinessPerson>();
-    const webDevelepoerLogger = new BusinessPersonLogger<WebDeveloper>();
+    function logStudentInfo(info: StudentInfo){
+        console.log(info.data.name);
+        console.log(info.data.age);
+        console.log(info.data.city);
+        console.log(info.grades);
+        if(info.internships){
+            console.log(info.internships);
+        }
+    };
 
+    function logPostGraduateStudentInfo(info: StudentInfo<PostGraduateStudent>){
+        
+        console.log(info.data.name);
+        console.log(info.data.age);
+        console.log(info.data.city);
+        console.log(info.data.projects);
+        console.log(info.grades);
+        if(info.internships){
+            console.log(info.internships);
+        }
 
-    const people = [
-        {name: 'harmony', age: 15, city: 'Cincinnati'},
-        {name: 'unity', age: 7, city: 'Cincinnati'}
-    ];
-    const businessPeople = [
-        {name: 'fred', age: 34, city: 'Cincinnati', salary: 100000},
-        {name: 'janay', age: 33, city: 'Cincinnati', salary: 110000}
-    ];
-    const webDevelopers = [
-        {name: 'fred', age: 34, city: 'Cincinnati', salary: 100000, frontEnd: true, backEnd: true, fullStack: true},
-        {name: 'janay', age: 33, city: 'Cincinnati', salary: 110000, fullStack: false, backEnd: false, frontEnd: true}
-    ];
-
-    studentLogger.log(people, (person)=>{
-        console.log(person);
-    });
-    businessPersonLogger.log(businessPeople, (businessPerson)=>{
-        console.log(businessPerson);
-    });
-    webDevelepoerLogger.log(webDevelopers, (webDeveloper)=>{
-        console.log(webDeveloper);
-    });
+    };
     
+    function logBusinessPersonInfo(info: BusinessPersonInfo){
+        console.log(info.data.name);
+        console.log(info.data.age);
+        console.log(info.data.city);
+        console.log(info.data.car);
+        console.log(info.grades);
+        console.log(info.salary)
+    };
+
+    const studentInfo = {
+
+        data: {
+            name: 'harmony',
+            age: 15,
+            city: 'Cincinnati'
+        },
+        grades: [4, 4, 4, 4]
+
+    };
+    const student1Info = {
+
+        data: {
+            name: 'harmony2',
+            age: 15,
+            city: 'Cincinnati'
+        },
+        grades: [4, 4, 4, 4],
+        internships: ['google', 'facebook']
+
+    };
+    
+    const postGraduateStudent = {
+
+        data: {
+            name: 'janay',
+            age: 15,
+            city: 'Cincinnati',
+            projects: ['Unlimited', 'Flowers over Stones', 'Phoenix']
+        },
+        grades: [4, 4, 4, 4],
+        internships: ['google', 'facebook'],
+
+    };
+
+    const businessPersoninfo = {
+
+        data: {
+            name: 'fred',
+            age: 34,
+            city: 'Cincinnati',
+            car: 'something nice'
+        },
+        grades: [4, 3.8, 3.9, 3.9],
+        salary: 100000
+
+    };
+
+    logBusinessPersonInfo(businessPersoninfo);
+    logStudentInfo(studentInfo);
+    logStudentInfo(student1Info);
+    logPostGraduateStudentInfo(postGraduateStudent);
 
 };
 
