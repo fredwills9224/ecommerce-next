@@ -107,13 +107,19 @@ export default function play (){
         };
     // Union of argument's type -> can only access attributes that both arguments share unless type has been cased
 
-    // Generic function
-        function printInfo(somObject: {[key: string]: string | number | boolean}){
-            console.log(somObject);
-        };
-    // Generic function
+    // Generic function using [unknown] instead of [any]
+        function printInfo(someObject: {[key: string]: unknown}){
+            
+            if(typeof someObject.age === 'string'){
+                console.log(someObject.age.toUpperCase());
+            }else{
+                console.log(someObject);
+            }
 
-    printInfo({ age: 23, isMarried: true, name: 'fred1' });
+        };
+    // Generic function using [unknown] instead of [any]
+
+    printInfo({ age: 'twenty years and four months', isMarried: true, name: 'fred1' });
     logCarInfo(car);
     logCarInfo(car1);
     logPersonInfo(fred);
