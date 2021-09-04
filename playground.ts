@@ -1,9 +1,16 @@
 interface Person {
     name: string,
-    age: number
+    age: number,
+    city: string
 };
 
-class Logger<T> {
+class Student implements Person{
+    name = '';
+    age = 0;
+    city = '';
+};
+
+class Logger<T extends Person> {
     log(items: Array<T>, callback: (item: T)=> void){
         
         items.forEach((item)=>{
@@ -15,21 +22,9 @@ class Logger<T> {
 
 export default function play (){
 
-    const logger = new Logger<string>();
-    const cars = ['audi', 'skoda', 'citroen'];
-    logger.log(cars, (car)=>{
-        console.log(car);
-    });
-
-    const logger2 = new Logger<number>();
-    const numbers = [1,2,3,4,5,6,7,8];
-    logger2.log(numbers, (number)=>{
-        console.log(number);
-    });
-
-    const logger3 = new Logger<Person>();
-    const people = [{name: 'fred', age: 30},{name: 'janay', age: 29}]
-    logger3.log(people, (person)=>{
+    const logger = new Logger<Student>();
+    const people = [{name: 'fred', age: 30, city: 'Cincinnati'},{name: 'janay', age: 29, city: 'Cindinnati'}]
+    logger.log(people, (person)=>{
         console.log(person);
     });
 
