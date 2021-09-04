@@ -3,8 +3,8 @@ interface Person {
     age: number
 };
 
-class Logger<Type> {
-    log(items: Array<Type>, callback: (item: Type)=> void){
+class Logger<T> {
+    log(items: Array<T>, callback: (item: T)=> void){
         
         items.forEach((item)=>{
             callback(item);
