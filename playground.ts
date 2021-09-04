@@ -21,19 +21,26 @@ interface AcademicPerson extends Person {
     };
 // Declaration merging can only be performed on interfaces
 
-
-
-export default function play (){
-
-    function iterate(items: Array<string>){
-
+class Logger {
+    log(items: Array<string>, callback: any){
+        debugger;
         items.forEach((item)=>{
-            console.log(item.toUpperCase());
+            debugger;
+            callback(item);
         });
 
     };
+};
 
-    iterate(['fred', 'janay', 'harmony',]);
+export default function play (){
+
+    const logger = new Logger();
+    const cars = ['audi', 'skoda', 'citroen'];
+    debugger;
+    logger.log(cars, (car: any)=>{
+        debugger;
+        console.log(car);
+    });
 
 };
 
