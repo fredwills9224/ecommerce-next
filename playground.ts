@@ -1,14 +1,14 @@
 // matching return types
-    // type ReturnType<T> = 
-    //     T extends T ? 
-    //     T : false
-    // ;
+    type ReturnType<T> = 
+        T extends T ? 
+        T : unknown
+    ;
 // matching return types
 // matching return types with infer
-    type ReturnType<T> =
-        T extends infer R ?
-        R : false
-    ;
+    // type ReturnType<T> =
+    //     T extends infer R ?
+    //     R : unknown
+    // ;
 // matching return types with infer
 //type ReturnType<T> = T extends ()=> infer R? R: number;
 
