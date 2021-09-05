@@ -2,59 +2,41 @@ interface Person{
     name: string
 };
 
-type SingleType<T> = 
-    T extends any[] ?
-    T[number] : T
-;
+// Generic [CustomArray] default [T]ype set to [string]
+    type CustomArray<T = string> = {
+        [index: number]: T,
+        push: Function
+    };
+// Generic [CustomArray] default [T]ype set to [string]
 
-// single type from array [Type] = string [Type1] = number [Type2] = person
-    type Type = SingleType<string[]>;
-    type Type1 = SingleType<number[]>;
-    type Type2 = SingleType<Person[]>;
-// single type from array [Type] = string [Type1] = number [Type2] = person
+// [SingleStringTypeFromCustomArray] type from [CustomArray]
+    type SingleStringTypeFromCustomArray = CustomArray<string>[number];
+// [SingleStringTypeFromCustomArray] type from [CustomArray]
+// [SinglePersonTypeFromCustomArray] type from [CustomArray]
+    type SinglePersonTypeFromCustomArray = CustomArray<Person>[number];
+// [SinglePersonTypeFromCustomArray] type from [CustomArray]
+// [SingleNumberTypeFromCustomArray] type from [CustomArray]
+    type SingleNumberTypeFromCustomArray = CustomArray<number>[number];
+// [SingleNumberTypeFromCustomArray] type from [CustomArray]
+
+
+const stringItems: CustomArray = ['1', '2', '3'];
+const personItems: CustomArray<Person> = [{name: 'janay'}, {name: 'harmony'}];
+const numberItems: CustomArray<number> = [1, 2, 3];
+
+const stringItem: SingleStringTypeFromCustomArray = '4';
+const personItem: SinglePersonTypeFromCustomArray = {name: 'fred'};
+const numberItem: SingleNumberTypeFromCustomArray = 4;
 
 export default function play (){
-
-    const stringList = ['1', '2', '3'];
-    const numberList = [1, 2, 3];
-    const personList = [
-        {name: '1'},
-        {name: '2'},
-        {name: '3'}
-    ];
-    const mixList = ['1', 2, {name: '3'}];
- 
-    function logStringArray(arrayInfo: Type[]){
-        console.log(arrayInfo);
-    };
-    function logNumberArray(arrayInfo: Type1[]){
-        console.log(arrayInfo);
-    };
-    function logPersonArray(arrayInfo: Type2[]){
-        console.log(arrayInfo);
-    };
     
+    stringItems.push(stringItem);
+    personItems.push(personItem);
+    numberItems.push(numberItem);
 
-    logStringArray(stringList);
-    logNumberArray(numberList);
-    logPersonArray(personList);
-    
-    // mehtods not allowed
-        // logStringArray(mixList);
-        // logNumberArray(mixList);
-        // logPersonArray(mixList);
-    // mehtods not allowed
+    console.log(stringItems);
+    console.log(personItems);
+    console.log(numberItems);
 
 };
-
-
-
-
-
-
-
-
-
-
-
 
