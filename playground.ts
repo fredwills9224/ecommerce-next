@@ -7,9 +7,11 @@ type SingleType<T> =
     T[number] : T
 ;
 
-type Type = SingleType<string[]>;
-type Type1 = SingleType<number[]>;
-type Type2 = SingleType<Person[]>;
+// single type from array [Type] = string [Type1] = number [Type2] = person
+    type Type = SingleType<string[]>;
+    type Type1 = SingleType<number[]>;
+    type Type2 = SingleType<Person[]>;
+// single type from array [Type] = string [Type1] = number [Type2] = person
 
 export default function play (){
 
