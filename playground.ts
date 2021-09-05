@@ -3,19 +3,19 @@ interface Driver{
 };
 
 // [CustomObject] with [key] value pairs
-    type CustomObject = {
-        [key: string]: string | number | Driver
+    type CustomObject<T = Number | Driver | String>= {
+        [key: string]: T
     };
 // [CustomObject] with [key] value pairs
 
 
-const car: CustomObject = {
+const car: CustomObject  = {
     age: 4,
     driver: {name:'fred'},
     city: 'Cincinnati'
 };
 
-export default function play (){
+export default function play(){
     
     console.log(car);
 
