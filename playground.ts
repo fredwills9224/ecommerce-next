@@ -19,14 +19,21 @@ interface Person{
     type SingleNumberTypeFromCustomArray = CustomArray<number>[number];
 // [SingleNumberTypeFromCustomArray] type from [CustomArray]
 
+// Array index [T]ype initialized by default setting of [CustomArray] 
+    const stringItems: CustomArray = ['1', '2', '3'];
+// Array index [T]ype initialized by default setting of [CustomArray] 
+// Array index [T]ype initialized by [CustomArray<Person>] 
+    const personItems: CustomArray<Person> = [{name: 'janay'}, {name: 'harmony'}];
+// Array index [T]ype initialized by [CustomArray<Person>] 
+// Array index [T]ype initialized by [CustomArray<number>] 
+    const numberItems: CustomArray<number> = [1, 2, 3];
+// Array index [T]ype initialized by [CustomArray<number>] 
 
-const stringItems: CustomArray = ['1', '2', '3'];
-const personItems: CustomArray<Person> = [{name: 'janay'}, {name: 'harmony'}];
-const numberItems: CustomArray<number> = [1, 2, 3];
-
-const stringItem: SingleStringTypeFromCustomArray = '4';
-const personItem: SinglePersonTypeFromCustomArray = {name: 'fred'};
-const numberItem: SingleNumberTypeFromCustomArray = 4;
+// Strictly declaring varaible with [T]ype that matches [CustomArray<T>]
+    const stringItem: SingleStringTypeFromCustomArray = '4';
+    const personItem: SinglePersonTypeFromCustomArray = {name: 'fred'};
+    const numberItem: SingleNumberTypeFromCustomArray = 4;
+// Strictly declaring varaible with [T]ype that matches [CustomArray<T>]
 
 export default function play (){
     
