@@ -1,56 +1,81 @@
-interface Driver{
-    name: string,
-    age: number,
-    previousEmployers: Array<string>
-};
-const driver: Driver ={
-    name: 'fred',
-    age: 34,
-    previousEmployers: ['FedEx', 'UPS']
-};
-const driver2: typeof driver= {
-    name: 'janay',
-    age: 33,
-    previousEmployers: ['UPS']
-};
+// matching return types
+    // type ReturnType<T> = 
+    //     T extends T ? 
+    //     T : false
+    // ;
+// matching return types
+// matching return types with infer
+    type ReturnType<T> =
+        T extends infer R ?
+        R : false
+    ;
+// matching return types with infer
+//type ReturnType<T> = T extends ()=> infer R? R: number;
 
-function logger(){
-    console.log('hello world');
-};
-function logger1(message: string){
-    console.log(message);
-};
-function logger2(...args: any[]){
-    console.log(args);
-};
+// original return types
+    function loggerType(){
+        return 'hello world';
+    };
+    function logger1Type(){
+        return 2;
+    };
+    function add2TypeLogger(a:number){
+        a += 2;
+        return a;
+    };
+    function addParametersTypeLogger(a1: number, b: number){
+        const c:number = a1 + b
+        return c;
+    };
+// original return types
 
-const kindOfLogger: typeof logger = 
-    ()=> console.log('Hi everyone')
-;
-const kindOfLogger1: typeof logger1 = 
-    (message1)=> console.log(message1)
-;
-const kindOfLogger2: typeof logger2 = 
-    (...args: any[])=> console.log(...args)
-;
+// return types matched once
+
+    const loggerReturnLoggerType: ReturnType <typeof loggerType> = 
+        ()=> 'hi there'
+    ;
+    const loggerReturnLogger1Type: ReturnType <typeof logger1Type> = 
+        ()=> 22;
+    ;
+    const loggerReturnAdd2TypeLogger: ReturnType <typeof add2TypeLogger> = 
+        
+        (a2: number)=>{
+            a2 += 2
+            return a2;
+        }
+
+    ;
+    const loggerReturnAddParametersTypeLogger: ReturnType<typeof addParametersTypeLogger> =
+        
+        (a3: number, b1:number)=>{
+            const c1:number = a3 + b1;
+            return c1;
+        }
+
+    ;
+    
+// return types matched once
+
+// return types matched twice
+    const addParameters: typeof loggerReturnAddParametersTypeLogger = (a4:number, b2:number)=>{
+        const c2:number = a4 + b2;
+        return c2;
+    };
+// return types matched twice
 
 export default function play(){
 
-    logger();
-    logger1('logger1Message');
-    logger2(driver);
-    logger2('from logger2');
-    logger2(2);
-    logger2({logger2Message: 'logger2Message'});
-    logger2(driver2, 'l2 says hi', 2);
+    console.log(loggerType());
+    console.log(logger1Type());
+    console.log(add2TypeLogger(1));
+    console.log(addParametersTypeLogger(2,3));
 
-    kindOfLogger();
-    kindOfLogger1(' from kindOfLogger1');
-    kindOfLogger2(driver);
-    kindOfLogger2('from kindOfLogger2');
-    kindOfLogger2(22);
-    kindOfLogger2({kindOfLogger2Message: 'Hi everyone from kindOfLogger2'});
-    kindOfLogger2(driver2, 'kol2 says hi', 22);
+    console.log(loggerReturnLoggerType());
+    console.log(loggerReturnLogger1Type());
+    console.log(loggerReturnAdd2TypeLogger(4));
+    console.log(loggerReturnAddParametersTypeLogger(5,6));
+    
+    console.log(addParameters(7,8));
 
 };
 
