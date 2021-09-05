@@ -33,6 +33,16 @@ type BusinessPersonInfo = {
     salary: number
 };
 
+type StudentInfoAnyType<T extends any = Student> = 
+    T extends Student ? 
+    { 
+        data: T, 
+        grades: number[], 
+        internships?: string[] 
+    } : string
+;
+
+type Dropout = { recevedDiploma: boolean }
 
 export default function play (){
 
@@ -44,6 +54,18 @@ export default function play (){
         if(info.internships){
             console.log(info.internships);
         }
+    };
+
+    function logStudentInfoAnyTypeDropoutDefault(info: StudentInfoAnyType<Dropout>){
+        console.log(info);
+    };
+
+    function logStudentInfoAnyTypeStudentDefault(info: StudentInfoAnyType){
+        console.log(info.data.name);
+        console.log(info.data.age);
+        console.log(info.data.city);
+        console.log(info.grades);
+        console.log(info.internships);
     };
 
     function logPostGraduateStudentInfo(info: StudentInfo<PostGraduateStudent>){
@@ -89,6 +111,22 @@ export default function play (){
         internships: ['google', 'facebook']
 
     };
+
+    const studentInfoForDropout = 
+        'student records incomplete'
+    ;
+
+    const objectiveStudent = {
+        
+        data: {
+            name: 'Unity',
+            age: 7,
+            city: 'Cincinnati'
+        },
+        grades: [4, 4, 4, 4],
+        internships: []
+        
+    };
     
     const postGraduateStudent = {
 
@@ -120,6 +158,8 @@ export default function play (){
     logStudentInfo(studentInfo);
     logStudentInfo(student1Info);
     logPostGraduateStudentInfo(postGraduateStudent);
+    logStudentInfoAnyTypeDropoutDefault(studentInfoForDropout);
+    logStudentInfoAnyTypeStudentDefault(objectiveStudent);
 
 };
 
