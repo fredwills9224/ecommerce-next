@@ -24,6 +24,9 @@ interface ChildPerson{
 let motherKey: MotherKey = 'chromosoneX';
 let fatherKey: FatherKey = 'chromosoneY';
 
+type Child<MotherKey, FatherKey, ChildPerson> = (motherkey: MotherKey, fatherKey: FatherKey)=> ChildPerson;
+
+
 const mother: Mother = {
     name: 'janay',
     age: 33,
@@ -42,15 +45,24 @@ const child: ChildPerson = {
     age: 15,
     motherKey: 'chromosoneX',
     fatherKey: 'chromosoneX'
-}; 
+};
+
+const childLogger: Child<MotherKey, FatherKey, ChildPerson> = 
+    (motherKey: MotherKey, fatherKey: FatherKey)=> {
+    return child;
+};
 
 export default function play(){
 
-    console.log(mother);
-    console.log(father);
-    console.log(child);
-    console.log(motherKey);
-    console.log(fatherKey);
+    
+
+    // console.log(mother);
+    // console.log(father);
+    // console.log(child);
+    // console.log(motherKey);
+    // console.log(fatherKey);
+
+    console.log(childLogger(motherKey, fatherKey));
 
 };
 
