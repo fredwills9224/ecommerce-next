@@ -7,9 +7,15 @@ type ProductApiReturnType = {
 };
 
 const getAllProducts = async (): Promise<any> =>{
+    
     const { data } = await fetchApi<ProductApiReturnType>({query: getAllProductsQuery});
-    // @TODO normalize and sreturn new data!
-    return data.products;
+    // (normalize and return new data) -> map over [edges] on [productConnection] and return [node] or empty array
+        const products = data.products.edges.map((edge)=>{
+            return edge.node}) ?? []
+        ;
+    // (normalize and return new data) -> map over [edges] on [productConnection] and return [node] or empty array
+    
+    return products;
 };
 
 export default getAllProducts;
