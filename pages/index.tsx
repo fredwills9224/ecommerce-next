@@ -29,5 +29,5 @@ export default function Home({ products }: InferGetStaticPropsType<typeof getSta
 };
 
 // Initializing [Layout] as [Home] prop
-  Home.Layout = Layout;
+  // Home.Layout = Layout;
 // Initializing [Layout] as [Home] prop
