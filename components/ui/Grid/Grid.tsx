@@ -7,7 +7,7 @@ interface Props{
     layout?: 'A' | 'B'
 };
 
-const Grid: FC<Props> = ({ children, layout })=> {
+const Grid: FC<Props> = ({ children, layout = 'A' })=> {
 
     const rootClassName = cn(
         s.root,{
