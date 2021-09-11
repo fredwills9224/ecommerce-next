@@ -1,0 +1,4 @@
+.root{
+    @apply grid gap-2 grid-rows-2;
+    grid-template-columns: repeat(3, minmax(130px, 1fr));
+}   
