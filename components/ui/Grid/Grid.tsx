@@ -1,9 +1,22 @@
 import { FC, ReactNode } from 'react';
 import s from './Grid.module.css';
+import cn from 'classnames';
 
-const Grid: FC<ReactNode> = ({ children })=> {
+interface Props{
+    children: ReactNode[]
+    layout?: 'A' | 'B'
+};
+
+const Grid: FC<Props> = ({ children, layout })=> {
+
+    const rootClassName = cn(
+        s.root,{
+            [s.layoutB]: layout === 'B',
+            [s.layoutA]: layout === 'A'
+        }
+    );
     return(
-        <div className={s.root}>
+        <div className={rootClassName}>
             {children}
         </div>
     );
