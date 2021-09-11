@@ -5,3 +5,12 @@ module.exports = {
     ]
 
 };
+
+// just for testing!
+// module.exports = {
+
+//     plugins: [
+//         require('tailwindcss')
+//     ]
+
+// };
