@@ -23,7 +23,7 @@ const ProductCard: FC<Props> = ({ product })=> {
                         <span>{ product.name }</span>
                     </h3>
                     <span className={s.productPrice}>
-                        $14.00
+                        {product.price.value} {product.price.currencyCode}
                     </span>
 
                 </div>
