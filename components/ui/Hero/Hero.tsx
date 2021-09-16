@@ -12,6 +12,7 @@ const Hero: FC<Props> = ({ headline, description })=>{
     return(
         <div className='bg-black'>
 
+            {/* <Container el={'[tag]' as any}> --> '[tag.default]' = <div> */}
             <Container>
                 <div className={s.root}>
                     
