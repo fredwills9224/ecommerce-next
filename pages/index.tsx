@@ -47,6 +47,7 @@ export default function Home({ products }: InferGetStaticPropsType<typeof getSta
   
           <ProductCard 
             key={product.id}
+            variant='slim'
             product={product}
           />
         
