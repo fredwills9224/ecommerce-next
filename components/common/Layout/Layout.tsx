@@ -7,11 +7,14 @@ import { useUI } from '@components/ui/Context';
 
 const Layout: FC  = ({ children })=> {
 
-    const ui = useUI();
+    const { isSidebarOpen, closeSidebar } = useUI();
     return(
         <div className={s.root}>
             <Navbar/>
-            <Sidebar isOpen={ui.isSidebarOpen}>
+            <Sidebar
+                onClose={closeSidebar} 
+                isOpen={isSidebarOpen}
+            >
                 <CartSidebar/>
             </Sidebar>
             <main className ='fit'>
