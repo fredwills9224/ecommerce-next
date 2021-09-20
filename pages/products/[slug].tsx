@@ -19,7 +19,10 @@ import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from "
     export const getStaticProps = async ({params}: GetStaticPropsContext<{slug: string}>)=>{
         
         const config = getConfig();
-        const { product } = await getProduct(config);
+        const { product } = await getProduct({
+            config,
+            variables: {slug: params?.slug
+        }});
         return{
 
             props: {
