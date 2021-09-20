@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
 interface Props{
-    children: any
+    children: any,
+    isOpen: boolean
 }
 
-const Sidebar: FC<Props> = ({ children })=>{
+const Sidebar: FC<Props> = ({ children, isOpen })=>{
     
-    const isOpen = true;
     return(
         <>
 
