@@ -5,8 +5,9 @@ import { useUI } from "@components/ui/Context";
 
 const CartSidebar: FC = ()=>{
 
-    const { closeSidebar } = useUI();
     const isEmpty = true;
+    const { closeSidebar } = useUI();
+
     const rootClass = cn(
         'h-full flex flex-col',
         {'bg-secondary text-secondary': isEmpty}
