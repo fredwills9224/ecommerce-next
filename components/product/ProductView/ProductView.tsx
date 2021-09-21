@@ -4,6 +4,7 @@ import s from './ProductView.module.css';
 import { Container } from "@components/ui";
 import Image from 'next/image';
 import { Product } from "@common/types/product";
+import { ProductSlider } from '@components/product';
 
 interface Props {
     product: Product,
@@ -20,25 +21,29 @@ const ProductView: FC<Props> = ({product})=> {
                     
                     <div className={s.nameBox}>
                         
-                        <h1 className={s.name}>Product Name</h1>
+                        <h1 className={s.name}>{product.name}</h1>
                         <div>
-                            50
+                            {product.price.value}
                             {``}
-                            $
+                            {product.price.currencyCode}
                         </div>
 
                     </div>
-                    <div className={s.imagContainer}>
-                        <Image
-                            className={s.img}
-                            src={"/product-image-placeholder.svg"}
-                            alt={'Product Image'}
-                            width={1050}
-                            height={1050}
-                            quality='85'
-                        />
-                    </div>
-
+                    <ProductSlider>
+                        {product.images.map(image =>
+                            <div key={image.url} className={s.imagContainer}>
+                                <Image
+                                    className={s.img}
+                                    src={image.url}
+                                    alt={image.alt}
+                                    width={1050}
+                                    height={1050}
+                                    quality='85'
+                                />
+                            </div>
+                        )}
+                    </ProductSlider>
+                    
                 </div>
                 <div className={s.sidebar}>
                     
@@ -53,7 +58,7 @@ const ProductView: FC<Props> = ({product})=> {
 
                         </div>
                         <div className='pb-14 break-words w-full max-w-xl text-lg'>
-                            Product description...
+                            {product.description}
                         </div>
 
                     </section>
