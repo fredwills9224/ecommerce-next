@@ -11,20 +11,40 @@ const normalizeProductImages = ( {edges}: {edges: Array<ImageEdge>} ) =>
     ))
 
 ;
+
 const normalizeProductPrice = ({ currencyCode, amount }: MoneyV2)=> ({
     value: +amount,
     currencyCode
 });
+
 const normalizeProductOption = ({
     id,
     values,
     name: displayName
     }: ProductOption)=>{
+    
+    const normalized = {
+        id,
+        displayName,
+        values: values.map(value =>{
 
+            let output: any = {
+                lable: value
+            };
+            if(displayName.match(/colou?r/gi)){
+                output = {
+                    ...output,
+                    hexColor: value
+                }
+            }
+            return output;
+
+        })
+    };
     console.log('ID: ', id);
     console.log('name: ', displayName);
     console.log('values: ', values);
-    return {};
+    return normalized;
 
 };
 
