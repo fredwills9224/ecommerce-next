@@ -37,8 +37,7 @@ export default function ProductSlug({product}: InferGetStaticPropsType<typeof ge
 
     return(
         <div>
-            {product.name}
-            {product.slug}
+            {JSON.stringify(product, null, 2)}
         </div>
     );
 
