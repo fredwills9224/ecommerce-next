@@ -35,6 +35,7 @@ import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from "
 
 export default function ProductSlug({product}: InferGetStaticPropsType<typeof getStaticProps>){
 
+    console.log(JSON.stringify(product, null, 2));
     return(
         <div>
             {JSON.stringify(product, null, 2)}
