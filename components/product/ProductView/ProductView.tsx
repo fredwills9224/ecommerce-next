@@ -59,6 +59,7 @@ const ProductView: FC<Props> = ({product})=> {
                                             key={`${option.id}-${optValue.lable}`}
                                             lable={optValue.lable}
                                             color={optValue.hexColor}
+                                            variant={option.displayName}
                                         />
                                     )}
                                 </div>
