@@ -4,7 +4,7 @@ import s from './ProductView.module.css';
 import { Container, Button } from "@components/ui";
 import Image from 'next/image';
 import { Product } from "@common/types/product";
-import { ProductSlider } from '@components/product';
+import { ProductSlider, Swatch } from '@components/product';
 
 interface Props {
     product: Product,
@@ -55,9 +55,11 @@ const ProductView: FC<Props> = ({product})=> {
                                 <h2 className='uppercase font-medium'>{option.displayName}</h2>
                                 <div className='flex flex-row py-4'>
                                     {option.values.map(optValue =>
-                                        <div key={`${option.id}-${optValue.lable}`}>
-                                            {optValue.lable}
-                                        </div>
+                                        <Swatch
+                                            key={`${option.id}-${optValue.lable}`}
+                                            lable={optValue.lable}
+                                            color={optValue.hexColor}
+                                        />
                                     )}
                                 </div>
     
