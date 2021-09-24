@@ -22,9 +22,9 @@ const ProductView: FC<Props> = ({product})=> {
                     <div className={s.nameBox}>
                         
                         <h1 className={s.name}>{product.name}</h1>
-                        <div>
+                        <div className={s.price}>
                             {product.price.value}
-                            {``}
+                            {` `}
                             {product.price.currencyCode}
                         </div>
 
