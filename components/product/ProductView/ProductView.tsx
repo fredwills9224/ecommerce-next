@@ -15,6 +15,7 @@ const ProductView: FC<Props> = ({product})=> {
     
     const [ choices, setChoices ] = useState<Choices>({});
     const variant = getVariant(product, choices);
+    console.log(variant);
     return(
 
         <Container>
