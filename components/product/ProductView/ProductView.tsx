@@ -17,7 +17,7 @@ type Choices = {
 
 const ProductView: FC<Props> = ({product})=> {
     
-    const [ choices, setChoices ] = useState({});
+    const [ choices, setChoices ] = useState<Choices>({});
     console.log(choices);
     return(
 
@@ -61,22 +61,28 @@ const ProductView: FC<Props> = ({product})=> {
 
                                 <h2 className='uppercase font-medium'>{option.displayName}</h2>
                                 <div className='flex flex-row py-4'>
-                                    {option.values.map(optValue =>
-                                        <Swatch
-                                            key={`${option.id}-${optValue.lable}`}
-                                            lable={optValue.lable}
-                                            color={optValue.hexColor}
-                                            variant={option.displayName}
-                                            onClick={
-                                                ()=>{
-                                                    setChoices({
-                                                        ...choices,
-                                                        [option.displayName.toLowerCase()]: optValue.lable.toLowerCase()
-                                                    })
+                                    {option.values.map(optValue =>{
+                                        
+                                        const activeChoice = choices[option.displayName.toLocaleLowerCase()];
+                                        return(
+                                            <Swatch
+                                                key={`${option.id}-${optValue.lable}`}
+                                                lable={optValue.lable}
+                                                color={optValue.hexColor}
+                                                variant={option.displayName}
+                                                active={optValue.lable.toLowerCase() === activeChoice}
+                                                onClick={
+                                                    ()=>{
+                                                        setChoices({
+                                                            ...choices,
+                                                            [option.displayName.toLowerCase()]: optValue.lable.toLowerCase()
+                                                        });
+                                                    }
                                                 }
-                                            }
-                                        />
-                                    )}
+                                            />
+                                        );
+
+                                    })}
                                 </div>
     
                             </div>
