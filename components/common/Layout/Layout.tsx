@@ -4,7 +4,7 @@ import { Sidebar } from '@components/ui';
 import { CartSidebar } from '@components/cart';
 import s from './Layout.module.css';
 import { useUI } from '@components/ui/Context';
-import { ApiProvider } from '@common';
+import { ApiProvider } from '@framework';
 
 const Layout: FC  = ({ children })=> {
 
