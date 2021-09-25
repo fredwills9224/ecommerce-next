@@ -5,10 +5,11 @@ import { Check } from '@components/icons';
 interface Props {
     color?: string,
     lable?: string,
-    variant?: 'size' | 'color'| string
+    variant?: 'size' | 'color'| string,
+    onClick: ()=> void
 }
 
-const Swatch: FC<Props> = ({color, lable, variant})=>{
+const Swatch: FC<Props> = ({color, lable, variant, ...rest})=>{
     
     lable = lable?.toLocaleLowerCase();
     variant = variant?.toLocaleLowerCase();
@@ -16,7 +17,7 @@ const Swatch: FC<Props> = ({color, lable, variant})=>{
         <button 
             style={color ? {backgroundColor: color} : {}}
             className={s.root}
-            
+            {...rest}
         >
             {/* <span>
                 <Check/>
