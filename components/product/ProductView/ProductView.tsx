@@ -10,6 +10,11 @@ interface Props {
     product: Product,
 }
 
+type AvailableChoices = 'color' | 'size' | string;
+type Choices = {
+    [P in AvailableChoices]: string
+};
+
 const ProductView: FC<Props> = ({product})=> {
     
     const [ choices, setChoices ] = useState({});
