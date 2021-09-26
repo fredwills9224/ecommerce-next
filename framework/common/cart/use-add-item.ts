@@ -1,7 +1,38 @@
-import { handler } from "@framework/cart/use-add-item";
-
+import { useHook } from "@common/utils/use-hook";
+ 
 const useAddItem = ()=>{
-    return handler.useHook();    
+    debugger;
+    const hook = useHook((hooks)=> {
+        debugger;
+        return hooks.cart.useAddItem
+    });
+    debugger;
+    return hook.useHook();
 };
 
 export default useAddItem;
+
+
+
+// import { useAddItem } from "@common/cart";
+
+// export default useAddItem;
+
+// export const handler = {
+
+//     fetcher: ()=>{
+//         console.log('Fetching Data!');
+//     },
+//     useHook: ()=>{
+
+//         debugger;
+//         return (input: any)=>{
+//             debugger;
+//             return{
+//                 output: JSON.stringify(input)+ '_MODIFIED'
+//             };
+//         };
+
+//     }
+
+// };
