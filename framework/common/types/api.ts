@@ -15,7 +15,8 @@ export interface ApiConfig{
 
 export interface ApiHooks {
     cart: {
-        useAddItem: any
+        useAddItem: any,
+        useCart: any
     }
 };
 
