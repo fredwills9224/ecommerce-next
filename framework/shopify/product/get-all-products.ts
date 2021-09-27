@@ -10,7 +10,7 @@ type ProductApiReturnType = {
 const getAllProducts = async (config: ApiConfig): Promise<Product[]> =>{
     
     const { data } = await config.fetch<ProductApiReturnType>({
-        url: config.apiUrl, query: getAllProductsQuery
+        query: getAllProductsQuery
     });
 
     // (normalize and return new data) -> map over [edges] on [productConnection] and return [node] or empty array
