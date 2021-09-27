@@ -14,9 +14,11 @@ export const useMutationHook = (hook: MutationHook)=>{
             
             return hook.fetcher({
                 input,
-                fetch: (input: any)=>{
+                fetch: async (input: any)=>{
 
-                    return JSON.stringify(input)+ '_MODIFIED';
+                    return {
+                        data: JSON.stringify(input)+ '_MODIFIED'
+                    };
                 
                 }
             });

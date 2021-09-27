@@ -14,6 +14,7 @@ export const handler: MutationHook = {
         return (input: any)=>{
 
             const response = fetch(input);
+            console.log(response);
             return{
                 output: response
             };
