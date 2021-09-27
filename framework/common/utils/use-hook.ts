@@ -22,3 +22,28 @@ export const useMutationHook = (hook: MutationHook)=>{
     });
 
 };
+
+// stale while revalidate hook
+    export const useSWRHook = (hook: any)=>{
+
+        return hook.useHook({
+            fetch: hook.fetcher
+        });
+
+    };
+// stale while revalidate hook
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
