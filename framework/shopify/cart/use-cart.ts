@@ -14,9 +14,7 @@ export const handler = {
     },
     useHook: ({useData}: any)=> {
         
-        debugger;
         const data = useData();
-        debugger;
         return {
             data
         };

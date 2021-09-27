@@ -27,11 +27,9 @@ export const useMutationHook = (hook: MutationHook)=>{
 const useData = ()=>{
     
     const [data, setData] = useState(null);
-    debugger;
     if(!data){
         setData({data: 'Cart Ready!!!'} as any);
     }
-    debugger;
     return data;
 
 };
@@ -41,27 +39,10 @@ const useData = ()=>{
         return hook.useHook({
             
             useData(){
-                debugger;
                 const data = useData();
-                debugger;
                 return data;
             }
 
         });
     };
 // stale while revalidate hook cache data first if possible
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
