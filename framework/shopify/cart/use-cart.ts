@@ -7,13 +7,16 @@ export const handler = {
         query: ''
     },
     fetcher(){
+        console.log('I am not called for now')
         return{
             data: 'cart ready!!!'
         };
     },
-    useHook: ({fetch}: any)=> {
+    useHook: ({useData}: any)=> {
         
-        const data = fetch();
+        debugger;
+        const data = useData();
+        debugger;
         return {
             data
         };

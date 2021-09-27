@@ -1,5 +1,6 @@
 import { useApiProvider } from "@common";
 import { MutationHook, ApiHooks } from "@common/types/hooks";
+import { useState } from "react";
 
 export const useHook = (fn: (apiHooks: ApiHooks)=> MutationHook)=>{
     const { hooks } = useApiProvider();
@@ -23,15 +24,32 @@ export const useMutationHook = (hook: MutationHook)=>{
 
 };
 
-// stale while revalidate hook
+const useData = ()=>{
+    
+    const [data, setData] = useState(null);
+    debugger;
+    if(!data){
+        setData({data: 'Cart Ready!!!'} as any);
+    }
+    debugger;
+    return data;
+
+};
+
+// stale while revalidate hook cache data first if possible
     export const useSWRHook = (hook: any)=>{
-
         return hook.useHook({
-            fetch: hook.fetcher
-        });
+            
+            useData(){
+                debugger;
+                const data = useData();
+                debugger;
+                return data;
+            }
 
+        });
     };
-// stale while revalidate hook
+// stale while revalidate hook cache data first if possible
 
 
 
