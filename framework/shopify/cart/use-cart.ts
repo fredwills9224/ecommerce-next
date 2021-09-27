@@ -7,16 +7,13 @@ export const handler = {
         query: ''
     },
     fetcher(){
-        debugger;
         return{
             data: 'cart ready!!!'
         };
     },
     useHook: ({fetch}: any)=> {
         
-        debugger;
         const data = fetch();
-        debugger;
         return {
             data
         };
