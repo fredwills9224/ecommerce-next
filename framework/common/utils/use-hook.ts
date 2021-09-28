@@ -30,7 +30,6 @@ const useData = (hook: any, fetcher: ApiFetcher)=>{
     const [data, setData] = useState(null);
     const hookFetcher = async ()=>{
         
-        debugger;
         try{
 
             return await hook.fetcher({
@@ -43,11 +42,9 @@ const useData = (hook: any, fetcher: ApiFetcher)=>{
         }
 
     };
-    debugger;
     if(!data){
 
         hookFetcher().then(data => {
-            debugger;
             setData(data);
         });
 
@@ -64,9 +61,7 @@ const useData = (hook: any, fetcher: ApiFetcher)=>{
             
             useData(){
 
-                debugger;
                 const data = useData(hook, fetcher);
-                debugger;
                 return data;
             
             }
