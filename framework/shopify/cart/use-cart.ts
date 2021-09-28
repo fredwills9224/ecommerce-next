@@ -10,10 +10,6 @@ export const handler = {
     async fetcher({fetch, options, input:{ checkoutId }}: any){
         
         const data = await fetch({ ...options });
-        // we nee checkout Id
-            console.log(checkoutId);
-            debugger;
-        // we nee checkout Id
         // get checkout
 
         // if there is no checkout then create checkout
