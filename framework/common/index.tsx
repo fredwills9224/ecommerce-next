@@ -15,10 +15,15 @@ export const ApiProvider = ({children, config, hooks}: ApiProviderProps)=>{
         
         return{
             fetcher: config.fetch,
-            hooks
+            hooks,
+            checkoutCookie: config.checkoutCookie
         };
 
-    }, [config.fetch, hooks]);
+    }, [
+        config.fetch, 
+        config.checkoutCookie, 
+        hooks
+    ]);
     return(
         <ApiContext.Provider 
             value={coreConfig}
