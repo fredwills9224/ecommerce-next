@@ -12,7 +12,6 @@ export const handler = {
         const data = await fetch({ ...options });
         // we nee checkout Id
             console.log(checkoutId);
-            debugger;
         // we nee checkout Id
         // get checkout
 

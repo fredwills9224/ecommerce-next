@@ -9,7 +9,6 @@ const useCart = ()=>{
     const fetcherWrapper: typeof hook.fetcher = (context)=>{
     
         context.input.checkoutId = Cookies.get(SHOPIFY_CHECKOUT_ID_COOKIE);
-        debugger;
         return hook.fetcher(context);
     
     };
