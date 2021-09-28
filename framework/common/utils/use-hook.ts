@@ -34,7 +34,8 @@ const useData = (hook: any, fetcher: ApiFetcher)=>{
 
             return await hook.fetcher({
                 fetch: fetcher,
-                options: hook.fetchOptions
+                options: hook.fetchOptions,
+                input: {}
             });
 
         }catch(error){
