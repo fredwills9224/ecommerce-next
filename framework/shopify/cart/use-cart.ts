@@ -13,14 +13,12 @@ export const handler = {
         let checkout;
         if(checkoutId){
 
-            debugger;
             const { data } = await fetch({
                 ...options,
                 variables: {
                     checkoutId
                 }
             });
-            debugger;
             checkout = data.node;
 
         }else{
