@@ -11,6 +11,7 @@ export const handler = {
     async fetcher({fetch, options, input:{ checkoutId }}: any){
         
         let checkout;
+        debugger;
         if(checkoutId){
             const { data } = await fetch({...options});
             checkout = data.node;
