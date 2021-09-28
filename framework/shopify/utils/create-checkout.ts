@@ -11,7 +11,6 @@ const createCheckout = async (
     });
     const { checkout } = data.checkoutCreate;
     const checkoutId = checkout?.id;
-    debugger;
     return checkout;
 
 };
