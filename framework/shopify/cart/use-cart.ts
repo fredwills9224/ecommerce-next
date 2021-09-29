@@ -25,7 +25,6 @@ export const handler = {
         }else{
             checkout = await createCheckout(fetch);
         }
-        debugger;
         return checkout;
 
     },
