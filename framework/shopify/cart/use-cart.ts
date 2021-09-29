@@ -1,6 +1,7 @@
 import useCart from "@common/cart/use-cart";
 import { Cart } from "@common/types/cart";
 import { SWRHook } from "@common/types/hooks";
+import { Checkout } from "@framework/schema";
 import { 
     checkoutToCart,
     createCheckout,
@@ -13,7 +14,9 @@ export type UseCartHookDescriptor = {
     fetcherInput: {
         checkoutId: string;
     };
-    fetcherOutput: any;
+    fetcherOutput: {
+        node: Checkout
+    };
     data: Cart
 
 };
@@ -26,7 +29,7 @@ export const handler: SWRHook<UseCartHookDescriptor> = {
     },
     async fetcher({fetch, options, input:{ checkoutId }}){
         
-        let checkout;
+        let checkout: Checkout;
         if(checkoutId){
 
             const { data } = await fetch({
@@ -38,7 +41,7 @@ export const handler: SWRHook<UseCartHookDescriptor> = {
             checkout = data.node;
 
         }else{
-            checkout = await createCheckout(fetch);
+            checkout = await createCheckout(fetch as any);
         }
         const cart = checkoutToCart(checkout);
         return cart;
