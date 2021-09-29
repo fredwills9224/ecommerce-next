@@ -10,6 +10,7 @@ const CartSidebar: FC = ()=>{
     const { closeSidebar } = useUI();
     const cart = useCart();
     console.log(cart);
+    debugger;
 
     const rootClass = cn(
         'h-full flex flex-col',
