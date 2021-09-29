@@ -5,7 +5,7 @@ import { getCheckoutId } from "@framework/utils";
 import { checkoutLineItemsAddMutation } from "@framework/utils/mutations";
 
 export default useAddItem;
-export type AddItemHook = {
+export type AddItemHookDescriptor = {
     
     fetcherInput: {
         variantId: string;
@@ -15,7 +15,7 @@ export type AddItemHook = {
 
 };
 
-export const handler: MutationHook = {
+export const handler: MutationHook<AddItemHookDescriptor> = {
 
     fetcherOptions: {
         query: checkoutLineItemsAddMutation
@@ -33,21 +33,19 @@ export const handler: MutationHook = {
             ]
 
         };
-        const response = await fetch({
+        const { data } = await fetch({
             ...options,
             variables
         });
-        return response;
+        return data;
         
     },
     useHook: ({fetch})=>{
 
-        return async (input: any)=>{
+        return async (input)=>{
 
             const response = await fetch(input);
-            return{
-                output: response
-            };
+            return response;
             
         };
 
