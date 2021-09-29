@@ -25,14 +25,18 @@ export const handler = {
         }else{
             checkout = await createCheckout(fetch);
         }
+        debugger;
         return checkout;
 
     },
     useHook: ({useData}: any)=> {
         
-        const data = useData();
+        const data = useData({
+            swrOptions:{
+                revalidateOnFocus: false
+            }
+        });
         return useMemo(()=>{
-            debugger;
             return data;
         }, [data]);
 
