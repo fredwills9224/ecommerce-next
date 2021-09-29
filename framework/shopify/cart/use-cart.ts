@@ -44,7 +44,7 @@ export const handler: SWRHook<UseCartHookDescriptor> = {
         return cart;
 
     },
-    useHook: ({useData}: any)=> {
+    useHook: ({useData})=> {
         
         const data = useData({
             swrOptions:{
