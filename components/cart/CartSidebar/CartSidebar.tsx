@@ -9,7 +9,6 @@ const CartSidebar: FC = ()=>{
     const isEmpty = true;
     const { closeSidebar } = useUI();
     const { data } = useCart();
-    debugger;
     console.log(data);
 
     const rootClass = cn(

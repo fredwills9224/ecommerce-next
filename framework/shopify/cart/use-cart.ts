@@ -29,7 +29,6 @@ export const handler = {
             checkout = await createCheckout(fetch);
         }
         const cart = checkoutToCart(checkout);
-        debugger;
         return cart;
 
     },
