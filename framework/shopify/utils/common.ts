@@ -33,6 +33,10 @@ export const checkoutDetailFragment = `
                     id
                     sku
                     title
+                    selectedOptions{
+                        name,
+                        value
+                    }
                     image {
                         originalSrc
                         altText

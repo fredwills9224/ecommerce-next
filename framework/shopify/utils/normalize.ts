@@ -28,7 +28,6 @@ const normalizeLineItem = ({
     node: { id, title, variant, ...rest } 
     }: CheckoutLineItemEdge): any=>{
 
-    debugger;
     return{
 
         id,
@@ -37,19 +36,28 @@ const normalizeLineItem = ({
         name: title,
         path: variant?.product?.handle ?? '',
         discounts: [],
-        // TODO: options -> size, color
+        options: variant?.selectedOptions.map(({name, value}: SelectedOption)=>{
+            
+            const option = normalizeProductOption({
+                id,
+                name,
+                values: [value]
+            });
+            return option;
+
+        }),
         variant:{
             id: String(variant?.id),
             sku: variant?.sku ?? '',
             name: variant?.title,
-            // TODO: image,
+            image:{
+                url: process.env.NEXT_PUBLIC_FRAMEWORK === "shopify_local" ?
+                `/images/${variant?.image?.originalSrc}` :
+                variant?.image?.originalSrc ?? '/product-image-placeholder.svg'
+            },
             requiresShipping: variant?.requiresShipping ?? false,
-            // actual price
-                price: variant?.priceV2.amount,
-            // actual price
-            // base price
-                listPrice: variant?.compareAtPriceV2?.amount,
-            // base price
+            price: variant?.priceV2.amount,
+            listPrice: variant?.compareAtPriceV2?.amount,
         },
         ...rest
 
