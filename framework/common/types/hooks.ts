@@ -42,7 +42,7 @@ export type MutationHook<H extends HookDescriptor = any> = {
     ;
     useHook(
         context: MutationHookContext<H['fetcherInput'], H['data']>
-    ): (input: H['fetcherInput'])=> Promise<H['data']>;
+    ): ()=> (input: H['fetcherInput'])=> Promise<H['data']>;
 }; 
 
 
