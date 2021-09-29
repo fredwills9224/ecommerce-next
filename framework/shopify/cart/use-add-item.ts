@@ -41,9 +41,7 @@ export const handler: MutationHook<AddItemHookDescriptor> = {
             ...options,
             variables
         });
-        debugger;
         const cart = checkoutToCart(data.checkoutLineItemsAdd.checkout);
-        debugger;
         return cart;
         
     },
