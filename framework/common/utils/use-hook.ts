@@ -31,6 +31,7 @@ const useData = (hook: any, fetcher: ApiFetcher)=>{
         
         try{
 
+            debugger;
             return await hook.fetcher({
                 fetch: fetcher,
                 options: { query },
@@ -42,6 +43,7 @@ const useData = (hook: any, fetcher: ApiFetcher)=>{
         }
 
     };
+    debugger;
     const response = useSWR(
         hook.fetchOptions.query,
         hookFetcher
