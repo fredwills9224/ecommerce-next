@@ -3,10 +3,13 @@ import s from './Usernav.module.css';
 import Link from 'next/link';
 import { Bag as Cart, Heart } from '@components/icons';
 import { useUI } from "@components/ui/Context";
+import useCart from '@framework/cart/use-cart';
 
 const Usernav: FC = ()=>{
 
     const { openSidebar } = useUI();
+    const { data } = useCart();
+    debugger;
     return(
         <nav>
             <ul className={s.list}>
