@@ -52,14 +52,13 @@ const CartSidebar: FC = ()=>{
                     </h2>
                     <ul className='py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-t border-accents-3'>
                         {data?.lineItems.map((item: LineItem)=>
+
                             <CartItem
                                 key={item.id}
                                 item={item}
                                 currencyCode={data.currency.code}
                             />
-                            // <div key={item.id}>
-                            //     {item.name} - {item.quantity}
-                            // </div>
+                            
                         )}
                     </ul>
 
