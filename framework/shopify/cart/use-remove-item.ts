@@ -29,7 +29,6 @@ export const handler: MutationHook<RemoveItemDescriptor>={
         options,
         fetch 
         }){
-        debugger;
         const { data } = await fetch({
             
             ...options,
@@ -39,16 +38,13 @@ export const handler: MutationHook<RemoveItemDescriptor>={
             }
 
         });
-        debugger;
         return data + '_modified!!!!' as any;
 
     },
     useHook: ({fetch})=> ()=>{
         return async (input)=>{
             
-            debugger;
             const data = await fetch(input);
-            debugger;
             return data;
 
         };
