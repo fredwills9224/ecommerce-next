@@ -1,23 +1,54 @@
 import useRemoveItem from "@common/cart/use-remove-item";
+import { Cart } from "@common/types/cart";
+import { MutationHook } from "@common/types/hooks";
+import { CheckoutLineItemsRemovePayload } from "@framework/schema";
+import { getCheckoutId } from "@framework/utils";
 
 export default useRemoveItem;
-export const handler={
+
+export type RemoveItemDescriptor = {
+
+    fetcherInput: {
+        id: string
+    };
+    fetcherOutput: {
+        checkoutLineItemsRemove: CheckoutLineItemsRemovePayload
+    };
+    data: Cart;
+
+};
+
+export const handler: MutationHook<RemoveItemDescriptor>={
 
     fetcherOptions:{
         query: 'query { hello }'
     },
-    async fetcher({ input, options, fetch }: any){
+    async fetcher({ 
 
+        input: { id },
+        options,
+        fetch 
+        }){
+        debugger;
         const { data } = await fetch({
-            ...options
+            
+            ...options,
+            variables: {
+                checkoutId: getCheckoutId(),
+                lineItemsIds: [id]
+            }
+
         });
-        return data + '_modified!!!!';
+        debugger;
+        return data + '_modified!!!!' as any;
 
     },
-    useHook: ({fetch}: any)=> ()=>{
-        return async (input: any)=>{
+    useHook: ({fetch})=> ()=>{
+        return async (input)=>{
             
+            debugger;
             const data = await fetch(input);
+            debugger;
             return data;
 
         };
