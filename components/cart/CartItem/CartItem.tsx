@@ -93,7 +93,6 @@ const CartItem = ({
                 <button
                   onClick={ async () => {
                     const item = await removeItem('testing input')
-                    debugger;
                   }}
                   className="flex justify-end outline-none"
                 >

@@ -8,20 +8,16 @@ export const handler={
     },
     async fetcher({ input, options, fetch }: any){
 
-        debugger;
         const { data } = await fetch({
             ...options
         });
-        debugger;
         return data + '_modified!!!!';
 
     },
     useHook: ({fetch}: any)=> ()=>{
         return async (input: any)=>{
             
-            debugger;
             const data = await fetch(input);
-            debugger;
             return data;
 
         };
