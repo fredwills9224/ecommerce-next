@@ -23,16 +23,14 @@ const CartItem = ({
 
             <div className="w-16 h-16 bg-violet relative overflow-hidden cursor-pointer">
 
-                <Link href={`/`}>
-                    <Image
-                        onClick={() => {}}
-                        className={s.productImage}
-                        width={150}
-                        height={150}
-                        src={item.variant.image!.url}
-                        unoptimized
-                    />
-                </Link>
+                <Image
+                    onClick={() => {}}
+                    className={s.productImage}
+                    width={150}
+                    height={150}
+                    src={item.variant.image!.url}
+                    unoptimized
+                />
 
             </div>
             <div className="flex-1 flex flex-col text-base">
