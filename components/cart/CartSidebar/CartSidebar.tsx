@@ -5,6 +5,7 @@ import { useUI } from "@components/ui/Context";
 import useCart from "@framework/cart/use-cart";
 import { LineItem } from "@common/types/cart";
 import { CartItem } from '@components/cart/';
+import { Button } from "@components/ui";
 
 const CartSidebar: FC = ()=>{
 
@@ -89,13 +90,13 @@ const CartSidebar: FC = ()=>{
                         </div>
 
                     </div>
-                    <button
+                    <Button
                         onClick={()=>{
                             alert('Going to checkout!')
                         }}
                     >
                         Proceed to Checkout
-                    </button>
+                    </Button>
 
                 </div>
             </>}
