@@ -28,7 +28,6 @@ const CartItem = ({
       if(Number.isInteger(val) && val >= 0){
        
         setQuantity(val);
-        alert(val);
         await updateItem({
           id: item.id,
           variantId: item.variantId,
