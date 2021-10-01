@@ -12,7 +12,6 @@ export const handler = {
         options,
         fetch
         }: any){
-        debugger;
         const {data} = await fetch({
             ...options,
             lineItems:[
@@ -30,7 +29,6 @@ export const handler = {
         return async(input: any)=>{
 
             const data = await fetch(input);
-            debugger;
             return data;
 
         };
