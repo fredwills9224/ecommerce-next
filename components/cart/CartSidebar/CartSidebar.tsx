@@ -91,9 +91,8 @@ const CartSidebar: FC = ()=>{
 
                     </div>
                     <Button
-                        onClick={()=>{
-                            alert('Going to checkout!')
-                        }}
+                        Component='a'
+                        href='/'
                     >
                         Proceed to Checkout
                     </Button>
