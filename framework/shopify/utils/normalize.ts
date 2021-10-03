@@ -12,6 +12,7 @@ export const normalizeCart = (checkout: Checkout): Cart=>{
 
         id: checkout.id,
         createdAt: checkout.createdAt,
+        completedAt: checkout.completedAt,
         currency: {
             code: checkout.totalPriceV2.currencyCode
         },
