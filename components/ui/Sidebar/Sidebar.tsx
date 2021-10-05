@@ -29,7 +29,7 @@ const Sidebar: FC<Props> = ({ children, isOpen, onClose })=>{
 
     }, [isOpen]);
     return(
-        <>
+        <div>
 
             { isOpen ? (
                 <div ref={ref} className='fixed inset-0 overflow-hidden h-full z-50'>
@@ -52,7 +52,7 @@ const Sidebar: FC<Props> = ({ children, isOpen, onClose })=>{
                 </div>
             ): null}
 
-        </>
+        </div>
     );
 
 };
