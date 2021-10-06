@@ -1,10 +1,10 @@
 module.exports = {
 
     plugins: [
-        'postcss-imports',
         'tailwindcss',
+        'postcss-nesting',
         'autoprefixer'
-    ],
+    ], 
     purge: {
         content: ['./src/**/*.html'],
         safelist: [
@@ -12,7 +12,7 @@ module.exports = {
           'flex-end',
           'flex'
         ]
-    },
+    }
 
 };
 
