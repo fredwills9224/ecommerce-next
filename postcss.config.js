@@ -4,15 +4,7 @@ module.exports = {
         'tailwindcss',
         'postcss-nesting',
         'autoprefixer'
-    ], 
-    purge: {
-        content: ['./src/**/*.html'],
-        safelist: [
-          'bg-accents-1',
-          'flex-end',
-          'flex'
-        ]
-    }
+    ]
 
 };
 
