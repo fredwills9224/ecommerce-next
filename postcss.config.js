@@ -4,7 +4,15 @@ module.exports = {
         'postcss-imports',
         'tailwindcss',
         'autoprefixer'
-    ]
+    ],
+    purge: {
+        content: ['./src/**/*.html'],
+        safelist: [
+          'bg-accents-1',
+          'flex-end',
+          'flex'
+        ]
+    },
 
 };
 
