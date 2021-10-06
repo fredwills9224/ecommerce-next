@@ -59,6 +59,7 @@ const CartItem = ({
                     className={s.productImage}
                     width={150}
                     height={150}
+                    alt={item.variant.image!.alt}
                     src={item.variant.image!.url}
                     unoptimized
                 />
